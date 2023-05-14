@@ -23,4 +23,5 @@ urlpatterns = [
     path('pybo/', include('pybo.urls')),
     path('common/', include('common.urls')),
     path('', base_views.index, name='index'),  # '/' 에 해당되는 path
+    path('cal/', include('cal.urls')), #새로운 cal app에 대한 path
 ]
