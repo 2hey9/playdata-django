@@ -24,6 +24,12 @@
                    value="{{ form.password.value|default_if_none:'' }}">
         </div>
         <button type="submit" class="btn btn-primary">로그인</button>
+        {% load socialaccount %}
+
+    <a href="{% provider_login_url 'kakao' method='oauth2' %}">카카오톡 회원가입</a>
     </form>
 </div>
+<!-- login.html -->
+
+
 {% endblock %}

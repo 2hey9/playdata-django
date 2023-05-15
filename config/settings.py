@@ -25,12 +25,15 @@ SECRET_KEY = 'ls&1oied3t*np!^y6664m!j2-l%ie=8g$w-bjk_pjryzd#3y6b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+
+ALLOWED_HOSTS = []
+
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'cal.apps.CalConfig',
     'common.apps.CommonConfig',
     'pybo.apps.PyboConfig',
     'django.contrib.admin',
@@ -38,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',   
     
     
     # 카카오톡 소셜 로그인 관련 부분
@@ -85,12 +88,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_db',
-        'USER' : 'root',
-        'PASSWORD' : '1234',
-        'HOST' : '54.180.134.205',
-        'PORT' : '3306'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 
 }
@@ -152,5 +151,18 @@ SITE_ID = 1
 from django.urls import reverse_lazy
 
 LOGIN_REDIRECT_URL = '/'  # 로그인 후 리다이렉트 될 경로
-ACCOUNT_LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')  
+ACCOUNT_LOGOUT_REDIRECT_URL = ['http://localhost:8000/oauth/callback/kakao', 'http://127.0.0.1:8000/accounts/kakao/login/?method=oauth2']
 ACCOUNT_LOGOUT_ON_GET = True
+
+#토큰 보안 검증
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8000/oauth/callback/kakao"]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'kakao': {
+        'APP': {
+            'client_id': '0e492e5e06b39ba614e0815899d160fb',
+            'secret': '카카오 API에서 발급받은 Secret Key',
+            'key': ''
+        }
+    }
+}
