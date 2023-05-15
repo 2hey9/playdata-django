@@ -16,11 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from pybo.views import base_views
+from pybo.views.base_views import index #수정
+from django.urls import re_path #추가
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('pybo/', include('pybo.urls')),
     path('common/', include('common.urls')),
-    path('', base_views.index, name='index'),  # '/' 에 해당되는 path
+    path('', index, name='index'),  # '/' 에 해당되는 path
+    #소셜로그인 관련
+    re_path(r'^accounts/', include('allauth.urls')),
 ]
