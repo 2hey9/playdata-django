@@ -20,6 +20,8 @@ from django.conf import settings
 from pybo.views import base_views
 from cal import urls
 from django.shortcuts import render
+from chat import views as chat
+
 urlpatterns = [
     path('', lambda request: render(request, 'index.html'), name='home'),
     path('admin/', admin.site.urls),
@@ -27,7 +29,8 @@ urlpatterns = [
     path('common/', include('common.urls')),
     path('board/', base_views.index, name='index'),  # '/' 에 해당되는 path
     path('cal/', include('cal.urls')), #새로운 cal app에 대한 path
-    
+    path("chat/", include("chat.urls")), 
+    # '/' 에 해당되는 path
 ]
 
 # 이미지 URL 설정

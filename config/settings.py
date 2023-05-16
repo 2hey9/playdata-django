@@ -34,6 +34,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'cal.apps.CalConfig',
+    'daphne',
+    'chat',
     'common.apps.CommonConfig',
     'pybo.apps.PyboConfig',
     'django.contrib.admin',
@@ -139,3 +141,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Define the URL prefix for media files
 MEDIA_URL = '/media/'
+
+# Daphne
+ASGI_APPLICATION = "config.asgi.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },}
+
+
+
