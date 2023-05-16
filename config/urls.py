@@ -15,17 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+<<<<<<< HEAD
 from django.conf.urls.static import static
 from django.conf import settings
+=======
+from django.shortcuts import render
+
+>>>>>>> origin/ps
 from pybo.views import base_views
 from cal import urls
 
 urlpatterns = [
+    path('', lambda request: render(request, 'index.html'), name='home'),
     path('admin/', admin.site.urls),
     path('pybo/', include('pybo.urls')),
     path('common/', include('common.urls')),
-    path('', base_views.index, name='index'),  # '/' 에 해당되는 path
+    path('board/', base_views.index, name='index'),  # '/' 에 해당되는 path
     path('cal/', include('cal.urls')), #새로운 cal app에 대한 path
+    
 ]
 
 # 이미지 URL 설정
