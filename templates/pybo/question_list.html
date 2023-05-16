@@ -25,6 +25,7 @@
             <th style="width:50%">제목</th>
             <th>글쓴이</th>
             <th>작성일시</th>
+            <th width="120" height="50" align="center" valign="top" style="padding-top:13px;">이미지 유무</th>
         </tr>
         </thead>
         <tbody>
@@ -48,6 +49,17 @@
             </td>
             <td>{{ question.author.username }}</td>  <!-- 글쓴이 추가 -->
             <td>{{ question.create_date }}</td>
+            <td width="100" height="50" align="center" valign="top" style="padding-top:15px;">
+                {% if question.photo %}
+                <span class="badge badge-secondary py-1">
+                    ◯
+                </span>
+                {% else %}
+                <span class="badge badge-warning py-1">
+                    ✕
+                </span>
+                {% endif %}
+            </td>
         </tr>
         {% endfor %}
         {% else %}
