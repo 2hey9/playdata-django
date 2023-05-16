@@ -15,16 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-<<<<<<< HEAD
 from django.conf.urls.static import static
 from django.conf import settings
-=======
-from django.shortcuts import render
-
->>>>>>> origin/ps
 from pybo.views import base_views
 from cal import urls
-
+from django.shortcuts import render
 urlpatterns = [
     path('', lambda request: render(request, 'index.html'), name='home'),
     path('admin/', admin.site.urls),
