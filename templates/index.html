@@ -74,17 +74,19 @@
                     <h2 class="mb-5">Recent Posts</h2>
                 </div>
                 <div class="row gx-0">
+                    {% for question in latest_questions %}
                     <div class="col-lg-6">
                         <a class="portfolio-item" href="#!">
                             <div class="caption">
                                 <div class="caption-content">
-                                    <div class="h2">Stationary</div>
-                                    <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
+                                    <div class="h2">{{ question.title }}</div>
+                                    <p class="mb-0">{{ question.description }}</p>
                                 </div>
                             </div>
                             <img class="img-fluid" src="assets/img/portfolio-1.jpg" alt="..." />
-                        </a>
+                        </a>                    
                     </div>
+                    {% endfor %}
                     <div class="col-lg-6">
                         <a class="portfolio-item" href="#!">
                             <div class="caption">
