@@ -25,12 +25,14 @@ SECRET_KEY = 'ls&1oied3t*np!^y6664m!j2-l%ie=8g$w-bjk_pjryzd#3y6b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['54.180.134.205']
+ALLOWED_HOSTS = ['54.180.134.205','127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'chat',
     'common.apps.CommonConfig',
     'pybo.apps.PyboConfig',
     'django.contrib.admin',
@@ -83,9 +85,20 @@ DATABASES = {
         'PASSWORD' : '1234',
         'HOST' : '54.180.134.205',
         'PORT' : '3306'
+
     }
 
 }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#         "TEST": {
+#             "NAME": BASE_DIR / "db.sqlite3",
+#         },
+#     }
+# }
 
 
 # Password validation
@@ -132,3 +145,15 @@ STATICFILES_DIRS = [
 # 로그인/로그아웃 성공후 이동하는 URL
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+
+# Daphne
+ASGI_APPLICATION = "config.asgi.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },}
