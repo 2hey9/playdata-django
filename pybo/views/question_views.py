@@ -19,7 +19,7 @@ def question_create(request):
             question.author = request.user  # 추가한 속성 author 적용
             question.create_date = timezone.now()
             question.save()
-            return redirect('pybo:index')
+            return redirect('pybo:index1')
     else:
         form = QuestionForm()
     context = {'form': form}

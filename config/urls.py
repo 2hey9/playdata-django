@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 from pybo.views import base_views
+from cal import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),

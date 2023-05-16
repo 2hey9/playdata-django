@@ -1,4 +1,5 @@
 from django.contrib import admin
-from cal.models import class_contents
+from cal.models import Event
 
-admin.site.register(class_contents)
+# Register your models here.
+admin.site.register(Event)
