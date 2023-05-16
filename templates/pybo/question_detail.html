@@ -24,10 +24,10 @@
                     <div class="card-text">{{ question.content|mark }}</div>
                     <div class="d-flex justify-content-end">
                         {% if question.modify_date %}
-                        <div class="badge badge-light p-2 text-left mx-3">
-                            <div class="mb-2">modified at</div>
-                            <div>{{ question.modify_date }}</div>
-                        </div>
+                            <div class="badge badge-light p-2 text-left mx-3">
+                                <div class="mb-2">modified at</div>
+                                <div>{{ question.modify_date }}</div>
+                            </div>
                         {% endif %}
                         <div class="badge badge-light p-2 text-left">
                             <div class="mb-2">{{ question.author.username }}</div>
@@ -35,13 +35,17 @@
                         </div>
                     </div>
                     {% if question.photo %}
-                    <div class="my-3"></div>
-                        <div style="width:10%; height:150px; float:left; margin-right:10px;">
-                            <img src="{{ question.photo.url }}"  width="70">
-                    
+                        <hr> <!-- 추가: 경계선 -->
+                        <div class="my-3"></div>
+                        <div class="text-center">
+                            <img src="{{ question.photo.url }}" class="adjusted-image">
                         </div>
-                    
                     {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        
                     {% if request.user == question.author %}
                     <div class="my-3">
                         <a href="{% url 'pybo:question_modify' question.id  %}"
