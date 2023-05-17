@@ -2,3 +2,10 @@
     border-top:dotted 1px #ddd;
     font-size:0.7em;
 }
+
+.adjusted-image {
+    max-width: 50%;
+    height: auto;
+    border: 5px solid green;
+    
+}
