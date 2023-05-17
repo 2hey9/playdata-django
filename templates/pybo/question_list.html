@@ -22,10 +22,11 @@
         <tr class="text-center thead-dark">
             <th>번호</th>
             <th>추천</th>
-            <th style="width:50%">제목</th>
+            <th width="100" height="80" align="center" valign="top" style="padding-top:13px;">썸네일</th>
+            <th style="width:30%">제목</th>
             <th>글쓴이</th>
             <th>작성일시</th>
-            <th width="120" height="50" align="center" valign="top" style="padding-top:13px;">이미지 유무</th>
+            
         </tr>
         </thead>
         <tbody>
@@ -41,6 +42,14 @@
                 <span class="badge badge-warning px-2 py-1">{{ question.voter.all.count }}</span>
                 {% endif %}
             </td>
+            <td width="100" height="80" align="center" valign="top" style="padding-top:5px;">
+                {% if question.photo %}
+                <img src="{{ question.photo.url }}">
+                </img>
+                {% else %}
+                     
+                {% endif %}
+            </td>
             <td class="text-left">
                 <a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
                 {% if question.answer_set.count > 0 %}
@@ -49,17 +58,7 @@
             </td>
             <td>{{ question.author.username }}</td>  <!-- 글쓴이 추가 -->
             <td>{{ question.create_date }}</td>
-            <td width="100" height="50" align="center" valign="top" style="padding-top:15px;">
-                {% if question.photo %}
-                <span class="badge badge-secondary py-1">
-                    ◯
-                </span>
-                {% else %}
-                <span class="badge badge-warning py-1">
-                    ✕
-                </span>
-                {% endif %}
-            </td>
+            
         </tr>
         {% endfor %}
         {% else %}
