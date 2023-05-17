@@ -13,37 +13,46 @@
     {% endif %}
     <h2 class="border-bottom py-2">{{ question.subject }}</h2>
     <div class="row my-3">
-        <div class="col-1"> <!-- 추천영역 -->
-            <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{question.voter.count}}</div>
-            <a href="#" data-uri="{% url 'pybo:vote_question' question.id  %}"
-               class="recommend btn btn-sm btn-secondary btn-block my-1">추천</a>
+        <div class="col-md-6"> <!-- 왼쪽 이미지 영역 -->
+            <div class="text-center">
+                <img src="{{ question.photo.url }}" class="adjusted-image">
+            </div>
         </div>
-        <div class="col-11"> <!-- 질문영역 -->
+        <div class="col-md-6"> <!-- 오른쪽 질문글과 추천 영역 -->
             <div class="card">
                 <div class="card-body">
-                    <div class="card-text">{{ question.content|mark }}</div>
-                    <div class="d-flex justify-content-end">
-                        {% if question.modify_date %}
+                    <div class="question-text">
+                        <div class="card-text">{{ question.content|mark }}</div>
+                        <div class="d-flex justify-content-end">
+                            {% if question.modify_date %}
                             <div class="badge badge-light p-2 text-left mx-3">
                                 <div class="mb-2">modified at</div>
                                 <div>{{ question.modify_date }}</div>
                             </div>
-                        {% endif %}
-                        <div class="badge badge-light p-2 text-left">
-                            <div class="mb-2">{{ question.author.username }}</div>
-                            <div>{{ question.create_date }}</div>
+                            {% endif %}
+                            <div class="badge badge-light p-2 text-left">
+                                <div class="mb-2">{{ question.author.username }}</div>
+                                <div>{{ question.create_date }}</div>
+                            </div>
                         </div>
                     </div>
-                    {% if question.photo %}
-                        <hr> <!-- 추가: 경계선 -->
-                        <div class="my-3"></div>
-                        <div class="text-center">
-                            <img src="{{ question.photo.url }}" class="adjusted-image">
-                        </div>
-                    {% endif %}
+                    <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{ question.voter.count }}</div>
+                    <a href="#" data-uri="{% url 'pybo:vote_question' question.id %}"
+                       class="recommend btn btn-sm btn-secondary btn-block my-1">추천</a>
                 </div>
             </div>
         </div>
+    </div>
+    
+    
+    
+    
+    
+        
+        
+        
+        
+        
         
         
                     {% if request.user == question.author %}
