@@ -4,8 +4,14 @@
 }
 
 .adjusted-image {
-    max-width: 50%;
+    max-width: 100%;
     height: auto;
     border: 5px solid green;
     
+}
+
+.column-divider {
+    border-top: 2px solid #000;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
