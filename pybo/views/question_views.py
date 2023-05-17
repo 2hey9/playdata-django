@@ -68,3 +68,9 @@ def upload_photo(request, question_id):
 
     context = {'form': form}
     return render(request, 'pybo/upload_photo.html', context)
+
+
+def index2(request):
+    latest_questions = Question.objects.order_by('-create_date')[:4]  # 최근 4개의 질문 가져오기
+    context = {'latest_questions': latest_questions}
+    return render(request, 'pybo/question_list.html', context)
