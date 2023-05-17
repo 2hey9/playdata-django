@@ -6,7 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>매일 매일 개발일지</title>
+        <title>
+            <div style="border: 1px solid black; padding: 10px; background-color: rgba(255, 255, 255, 0.5);">
+                CodeLog
+            </div>
+        </title>        
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'icon/cal.png' %}" />
         <!-- Font Awesome icons (free version)-->
@@ -23,22 +27,32 @@
         <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
         <nav id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand"><a href="#page-top">Start Bootstrap</a></li>
-                <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
+                <style>
+                    .sub-menu {
+                        display: none;
+                    }
+                    .sidebar-nav-item:hover .sub-menu {
+                        display: block;
+                    }
+                </style>
                 <li class="sidebar-nav-item"><a href="#about">About</a></li>
-                <li class="sidebar-nav-item"><a href="#services">Services</a></li>
-                <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-                <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+                <li class="sidebar-nav-item"><a href="#resemble">service</a></li>
+                    <ul class="sub-menu">
+                        <li><a href="{% url 'cal:calendar' %}">Calendar</a></li>
+                        <li><a href="{% url 'index' %}">Board</a></li>
+                    </ul>
+                <li class="sidebar-nav-item"><a href="#ranking">What we offer</a></li>
+                <li class="sidebar-nav-item"><a href="#contact">3조 인원</a></li>
             </ul>
         </nav>
+
         <!-- Header-->
         <header class="masthead d-flex align-items-center">
             <div class="container px-4 px-lg-5 text-center">
-                <h1 class="mb-1">매일 매일 개발일지</h1>
-                <h3 class="mb-5"><em>Daily coding note</em></h3>
-                <a class="btn btn-primary btn-xl" href="{% url 'cal:calendar' %}">캘린더로</a>
-                <a class="btn btn-primary btn-xl" href="{% url 'index' %}">게시판으로</a>
-
+                <h1 class="mb-1" style="color: white;">Codelog</h1>
+                <h3 class="mb-5" style="color: white;"><em>Daily coding log</em></h3>
+                <a class="btn btn-outline-dark btn-xl" href="{% url 'cal:calendar' %}" style="background-color: black; color: white;">calendar</a>
+                <a class="btn btn-outline-dark btn-xl" href="{% url 'index' %}" style="background-color: black; color: white;">posting</a>                             
             </div>
         </header>
         <!-- Services-->
@@ -53,7 +67,7 @@
                         <a href="{% url 'cal:calendar' %}">
                             <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-screen-smartphone"></i></span>
                         </a>
-                        <h4><strong>Calenar</strong></h4>
+                        <h4><strong>Calendar</strong></h4>
                         <p class="text-faded mb-0">What we study</p>
                     </div>
                     <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
@@ -66,7 +80,7 @@
                 </div>            
             </div>
         </section>
-        <!-- Portfolio-->
+                <!-- Portfolio-->
         <section class="content-section" id="portfolio">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
@@ -74,53 +88,24 @@
                     <h2 class="mb-5">Recent Posts</h2>
                 </div>
                 <div class="row gx-0">
+                    {% for question in recent_questions %}
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <a class="portfolio-item" href="{% url 'pybo:detail' question.id %}">
                             <div class="caption">
                                 <div class="caption-content">
-                                    <div class="h2">Stationary</div>
-                                    <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
+                                    <div class="h2">{{ question.subject }}</div>
+                                    <p class="mb-0">{{ question.content }}</p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio-1.jpg" alt="..." />
+                            <!-- 이미지를 표시하고 싶다면 해당 게시글에 이미지 필드를 추가하고 이미지 경로를 가져와서 아래 이미지 태그에 적용하세요. -->
+                            <!-- <img class="img-fluid" src="{{ question.image.url }}" alt="..." /> -->
                         </a>
                     </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Ice Cream</div>
-                                    <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio-2.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Strawberries</div>
-                                    <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio-3.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Workspace</div>
-                                    <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio-4.jpg" alt="..." />
-                        </a>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
+
         <!-- Map-->
         <div class="map" id="contact">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.9106408199414!2d127.01810731175331!3d37.48643502860019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca126cecccf29%3A0xb3a7c7841f79bc23!2z7ZSM66CI7J20642w7J207YSwIOyEnOy0iOy6oO2NvOyKpA!5e0!3m2!1sko!2skr!4v1684258176419!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -149,6 +134,8 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="static/js/scripts.js"></script>
     </body>
 </html>
+
+

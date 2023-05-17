@@ -46,3 +46,11 @@ def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     context = {'question': question}
     return render(request, 'pybo/question_detail.html', context)
+
+
+def index(request):
+    recent_questions = get_recent_questions()
+    context = {
+        'recent_questions': recent_questions,
+    }
+    return render(request, 'index.html', context)
