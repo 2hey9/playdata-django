@@ -88,17 +88,63 @@
                     <h2 class="mb-5">Recent Posts</h2>
                 </div>
                 <div class="row gx-0">
+<<<<<<< HEAD
                     {% for question in recent_questions %}
+=======
+                    {% for question in latest_questions %}
+>>>>>>> c68e8f0f01e1a6677c09379462577ef8026cd35d
                     <div class="col-lg-6">
                         <a class="portfolio-item" href="{% url 'pybo:detail' question.id %}">
                             <div class="caption">
                                 <div class="caption-content">
+<<<<<<< HEAD
                                     <div class="h2">{{ question.subject }}</div>
                                     <p class="mb-0">{{ question.content }}</p>
                                 </div>
                             </div>
                             <!-- 이미지를 표시하고 싶다면 해당 게시글에 이미지 필드를 추가하고 이미지 경로를 가져와서 아래 이미지 태그에 적용하세요. -->
                             <!-- <img class="img-fluid" src="{{ question.image.url }}" alt="..." /> -->
+=======
+                                    <div class="h2">{{ question.title }}</div>
+                                    <p class="mb-0">{{ question.description }}</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio-1.jpg" alt="..." />
+                        </a>                    
+                    </div>
+                    {% endfor %}
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" href="#!">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Ice Cream</div>
+                                    <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio-2.jpg" alt="..." />
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" href="#!">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Strawberries</div>
+                                    <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio-3.jpg" alt="..." />
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" href="#!">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">Workspace</div>
+                                    <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio-4.jpg" alt="..." />
+>>>>>>> c68e8f0f01e1a6677c09379462577ef8026cd35d
                         </a>
                     </div>
                     {% endfor %}
