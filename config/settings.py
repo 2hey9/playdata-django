@@ -90,16 +90,6 @@ DATABASES = {
 
 }
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#         "TEST": {
-#             "NAME": BASE_DIR / "db.sqlite3",
-#         },
-#     }
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -157,3 +147,6 @@ CHANNEL_LAYERS = {
             "hosts": [("127.0.0.1", 6379)],
         },
     },}
+
+
+
