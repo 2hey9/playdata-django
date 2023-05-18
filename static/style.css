@@ -1,3 +1,15 @@
+
+@font-face {
+  font-family: 'S-CoreDream-3Light';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'S-CoreDream-3Light';
+}
+
 .comment {
     border-top:dotted 1px #ddd;
     font-size:0.7em;
@@ -15,3 +27,5 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+

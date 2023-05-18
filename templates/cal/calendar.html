@@ -1,5 +1,6 @@
 {% extends 'cal/base.html' %}
 
+
 {% block title %}
 플레이데이터 22기 수업 캘린더
 {% endblock %}
@@ -11,8 +12,8 @@
 	<a class="btn btn-outline-primary right" href="{% url 'cal:event_new' %}"> 새로운 수업 내용 추가 </a>
 </div>
 
-<div class="calendar-wrapper">
-	{{ calendar }}
-</div>
+
+{{ calendar }}
+
 
 {% endblock %}

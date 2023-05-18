@@ -17,12 +17,18 @@
   <title>Django Calendar App</title>
 </head>
 <body>
+  {% include "navbar.html" %}
+  <!-- <div class="container">
+    <div class="row my-3">
+      <div class="col"> -->
+        <h1 class="title">{% block title %}{% endblock %}</h1>
+        {% block content %}
+        {% endblock %}
+      <!-- </div>
+    </div>
+  </div> -->
 
-  <h1 class="title">{% block title %}{% endblock %}</h1>
-  <hr>
 
-  {% block content %}
-  {% endblock %}
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
