@@ -1,6 +1,14 @@
 /* Common styles */
+
+@font-face {
+  font-family: 'S-CoreDream-3Light';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  font-family: "ptsans", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'S-CoreDream-3Light';
 }
 
 .left {
@@ -29,54 +37,113 @@ body {
 
 .form input, .form select, .form textarea {
   border-radius: 5px;
-  border: 1px solid #17a2b8;
+  border: 2px solid #000000;
   outline: none;
   background: none;
   padding: 5px;
-  width: 100%;
+  width: 90%;
 }
 
-/* App styles */
+/* cal 페이지 styles */
 .title {
   text-align: center;
+  font-family: 'S-CoreDream-3Light';
+  font-weight: 700;
   margin: 10px;
+  /* font-weight: bold; */
 }
 
-.calendar {
-  width: 98%;
+
+.calendar { /* 캘린더 전체에 적용되는 내용*/
+  width: 90%;
   margin: auto;
   font-size: 13px;
+  font-family: 'S-CoreDream-3Light';
+  border-collapse: separate;
+
 }
 
-.calendar tr, .calendar td {
+
+.calendar tr, .calendar th {
   border: 1px solid black;
+
 }
 
-.calendar th {
+.calendar td { /* calendar date 부분 */
+   border: 1px solid black;
+  color: #154207;
+  font-weight: 700;
+  width: 200px !important;
+  height: 150px;
+  padding: 20px 0px 0px 5px;
+  text-align: center;
+
+}
+
+.calendar a { /* 추가한 일정 표시 */
+  font-size: 15px;
+  margin-bottom: 5px;
+  background-color: #154207;
+  border: 2px solid #154207;
+  border-radius: 5px;
+  color: white;
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+  overflow: hidden; /* 넘치는 부분을 숨김 */
+  text-overflow: ellipsis; /* 넘치는 부분을 ...으로 표시 */
+  display: block; /* 블록 요소로 설정하여 너비 조정 가능하도록 함 */
+  width: 100%; /* 부모 요소(캘린더 칸)의 너비에 맞게 설정 */
+  text-align: left;
+}
+
+
+.calendar th {  /* 테이블 헤더(요일)에 스타일 적용 */
+  height: 37px;
+  background-color: #154207;
+  color:white;
   padding: 10px;
   text-align: center;
   font-size: 18px;
+  /* border-radius: 20pX; 
+  border: 1px solid #000; 테두리 스타일과 색상을 지정합니다 */
 }
 
-.calendar td {
-  width: 200px;
-  height: 150px;
-  padding: 20px 0px 0px 5px;
-}
 
 .month {
   font-size: 25px;
+  color:white;
+  height: 37px;
+  background-color: #154207;
+  color:white;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #000;
+  -webkit-border-radius: 15px 15px 0px 0px;
+  -moz-border-radius: 15px 15px 0px 0px;
+  border-radius: 15px 15px 0px 0px;
+
+
 }
 
 .date {
   font-size: 16px;
+  text-align: center;
 }
 
-ul {
+
+.calendar ul {
   height: 100%;
-  padding: 0px 5px 0px 20px;
+  width: 200px !important;
+  padding: 0px 5px 0px 3px;
+
+}
+
+.calendar li {
+  list-style-type: none; /* 기본 마커 제거 */
 }
 
 a {
-  color: #17a2b8;
+  color: #002dc1;
+  background-color: #154207;
 }
+
+
