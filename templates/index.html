@@ -35,21 +35,28 @@
                         display: block;
                     }
                 </style>
-                <li class="sidebar-nav-item"><a href="#about">About</a></li>
-                <li class="sidebar-nav-item"><a href="#resemble">service</a></li>
+                <li class="sidebar-nav-item"><a href="#">Code Log</a></li>
+                <li class="sidebar-nav-item"><a href="#services">Service</a>
                     <ul class="sub-menu">
                         <li><a href="{% url 'cal:calendar' %}">Calendar</a></li>
                         <li><a href="{% url 'index' %}">Board</a></li>
                     </ul>
-                <li class="sidebar-nav-item"><a href="#ranking">What we offer</a></li>
-                <li class="sidebar-nav-item"><a href="#contact">3조 인원</a></li>
+                </li>
+                <li class="sidebar-nav-item"><a href="#contact">위치</a></li>
+                {% if user.is_authenticated %}
+                    <li class="sidebar-nav-item"><a href="{% url 'common:logout' %}">로그아웃</a></li>
+                {% else %}
+                    <li class="sidebar-nav-item"><a href="{% url 'common:login' %}">로그인</a></li>
+                {% endif %}
             </ul>
         </nav>
+
+
 
         <!-- Header-->
         <header class="masthead d-flex align-items-center">
             <div class="container px-4 px-lg-5 text-center">
-                <h1 class="mb-1" style="color: white;">Codelog</h1>
+                <h1 class="mb-1" style="color: white;">Code log</h1>
                 <h3 class="mb-5" style="color: white;"><em>Daily coding log</em></h3>
                 <a class="btn btn-outline-dark btn-xl" href="{% url 'cal:calendar' %}" style="background-color: black; color: white;">calendar</a>
                 <a class="btn btn-outline-dark btn-xl" href="{% url 'index' %}" style="background-color: black; color: white;">posting</a>                             
@@ -80,77 +87,8 @@
                 </div>            
             </div>
         </section>
-                <!-- Portfolio-->
-        <section class="content-section" id="portfolio">
-            <div class="container px-4 px-lg-5">
-                <div class="content-section-heading text-center">
-                    <h3 class="text-secondary mb-0">Post</h3>
-                    <h2 class="mb-5">Recent Posts</h2>
-                </div>
-                <div class="row gx-0">
-<<<<<<< HEAD
-                    {% for question in recent_questions %}
-=======
-                    {% for question in latest_questions %}
->>>>>>> c68e8f0f01e1a6677c09379462577ef8026cd35d
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="{% url 'pybo:detail' question.id %}">
-                            <div class="caption">
-                                <div class="caption-content">
-<<<<<<< HEAD
-                                    <div class="h2">{{ question.subject }}</div>
-                                    <p class="mb-0">{{ question.content }}</p>
-                                </div>
-                            </div>
-                            <!-- 이미지를 표시하고 싶다면 해당 게시글에 이미지 필드를 추가하고 이미지 경로를 가져와서 아래 이미지 태그에 적용하세요. -->
-                            <!-- <img class="img-fluid" src="{{ question.image.url }}" alt="..." /> -->
-=======
-                                    <div class="h2">{{ question.title }}</div>
-                                    <p class="mb-0">{{ question.description }}</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio-1.jpg" alt="..." />
-                        </a>                    
-                    </div>
-                    {% endfor %}
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Ice Cream</div>
-                                    <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio-2.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Strawberries</div>
-                                    <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio-3.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Workspace</div>
-                                    <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio-4.jpg" alt="..." />
->>>>>>> c68e8f0f01e1a6677c09379462577ef8026cd35d
-                        </a>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
+        <!-- Portfolio-->
+
 
         <!-- Map-->
         <div class="map" id="contact">
@@ -163,13 +101,7 @@
             <div class="container px-4 px-lg-5">
                 <ul class="list-inline mb-5">
                     <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
+                        <a class="social-link rounded-circle text-white" href="https://github.com/2hey9/playdata-django"><i class="icon-social-github"></i></a>
                     </li>
                 </ul>
                 <p class="text-muted small mb-0">Copyright &copy; Your Website 2023</p>
