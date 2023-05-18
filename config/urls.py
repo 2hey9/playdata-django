@@ -15,9 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-
 from pybo.views import base_views
-from chat import views as chat
 
 urlpatterns = [
     path('admin/', admin.site.urls),
