@@ -23,22 +23,39 @@
         <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
         <nav id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand"><a href="#page-top">Start Bootstrap</a></li>
-                <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
-                <li class="sidebar-nav-item"><a href="#about">About</a></li>
-                <li class="sidebar-nav-item"><a href="#services">Services</a></li>
-                <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-                <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+                <style>
+                    .sub-menu {
+                        display: none;
+                    }
+                    .sidebar-nav-item:hover .sub-menu {
+                        display: block;
+                    }
+                </style>
+                <li class="sidebar-nav-item"><a href="#">Code Log</a></li>
+                <li class="sidebar-nav-item"><a href="#services">Service</a>
+                    <ul class="sub-menu">
+                        <li><a href="{% url 'cal:calendar' %}">Calendar</a></li>
+                        <li><a href="{% url 'index' %}">Board</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-nav-item"><a href="#contact">위치</a></li>
+                {% if user.is_authenticated %}
+                    <li class="sidebar-nav-item"><a href="{% url 'common:logout' %}">로그아웃</a></li>
+                {% else %}
+                    <li class="sidebar-nav-item"><a href="{% url 'common:login' %}">로그인</a></li>
+                {% endif %}
             </ul>
         </nav>
+
+
+
         <!-- Header-->
         <header class="masthead d-flex align-items-center">
             <div class="container px-4 px-lg-5 text-center">
-                <h1 class="mb-1" style="color: white;">코드Log CodeLog CODELOG</h1>
-                <h3 class="mb-5"><em>Daily coding note</em></h3>
-                <a class="btn btn-primary btn-xl" href="{% url 'cal:calendar' %}">캘린더로</a>
-                <a class="btn btn-primary btn-xl" href="{% url 'index' %}">게시판으로</a>
-
+                <h1 class="mb-1" style="color: white;">Code log</h1>
+                <h3 class="mb-5" style="color: white;"><em>Daily coding log</em></h3>
+                <a class="btn btn-outline-dark btn-xl" href="{% url 'cal:calendar' %}" style="background-color: black; color: white;">calendar</a>
+                <a class="btn btn-outline-dark btn-xl" href="{% url 'index' %}" style="background-color: black; color: white;">posting</a>                             
             </div>
         </header>
         <!-- Services-->
@@ -67,6 +84,7 @@
             </div>
         </section>
         <!-- Portfolio-->
+<<<<<<< HEAD
         <section class="content-section" id="portfolio">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
@@ -123,6 +141,10 @@
                 </div>
             </div>
         </section>
+=======
+
+
+>>>>>>> 2280e275642b6e3eb0451c58ab793887ec40db14
         <!-- Map-->
         <div class="map" id="contact">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.9106408199414!2d127.01810731175331!3d37.48643502860019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca126cecccf29%3A0xb3a7c7841f79bc23!2z7ZSM66CI7J20642w7J207YSwIOyEnOy0iOy6oO2NvOyKpA!5e0!3m2!1sko!2skr!4v1684258176419!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -134,13 +156,7 @@
             <div class="container px-4 px-lg-5">
                 <ul class="list-inline mb-5">
                     <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
+                        <a class="social-link rounded-circle text-white" href="https://github.com/2hey9/playdata-django"><i class="icon-social-github"></i></a>
                     </li>
                 </ul>
                 <p class="text-muted small mb-0">Copyright &copy; Your Website 2023</p>
