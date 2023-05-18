@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% load pybo_filter %}
 {% block content %}
-<div class="container my-3">
-    <div class="row justify-content-between my-3">
-        <div class="col-2">
+<div class="container my-2 padding-0 10px">
+    <div class="row justify-content-between my-3" style="margin: 0px;">
+        <div class="col-2.5">
             <select class="form-control so">
                 <option value="recent" {% if so == 'recent' %}selected{% endif %}>최신순</option>
                 <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>추천순</option>
                 <option value="popular" {% if so == 'popular' %}selected{% endif %}>인기순</option>
             </select>
         </div>
-        <div class="col-4 input-group">
+        <div class="col-4 input-group" style="padding: 0;">
             <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="button" id="btn_search">찾기</button>
@@ -18,22 +18,21 @@
         </div>
     </div>
     <table class="table">
-        <thead>
-        <tr class="text-center thead-dark">
-            <th>번호</th>
-            <th>추천</th>
-            <th width="100" height="80" align="center" valign="top" style="padding-top:13px;">썸네일</th>
-            <th style="width:30%">제목</th>
-            <th>글쓴이</th>
-            <th>작성일시</th>
-            
+        <thead style="background-color: #154207;">
+        <tr class="text-center">
+            <th width="100" height="60" style="color:white;">번호</th>
+            <th width="55" height="60" style="color:white;">추천</th>
+            <th width="100" height="60" style="color:white;">썸네일</th>
+            <th width="25%" style="color:white;">제목</th>
+            <th width="100" height="60" style="color:white;">글쓴이</th>
+            <th width="100" height="60" style="color:white;">작성일시</th>
         </tr>
         </thead>
         <tbody>
         {% if question_list %}
         {% for question in question_list %}
         <tr class="text-center">
-            <td>
+            <td width="60">
                 <!-- 번호 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
                 {{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}
             </td>
@@ -44,10 +43,8 @@
             </td>
             <td width="100" height="80" align="center" valign="top" style="padding-top:5px;">
                 {% if question.photo %}
-                <img src="{{ question.photo.url }}" width="100" height="80">
+                <img src="{{ question.photo.url }}" width="100" height="105">
                 </img>
-                {% else %}
-                     
                 {% endif %}
             </td>
             <td class="text-left">
@@ -57,8 +54,7 @@
                 {% endif %}
             </td>
             <td>{{ question.author.username }}</td>  <!-- 글쓴이 추가 -->
-            <td>{{ question.create_date }}</td>
-            
+            <td style="font-size: small;">{{ question.create_date }}</td>
         </tr>
         {% endfor %}
         {% else %}
@@ -121,13 +117,11 @@ $(document).ready(function(){
         $("#page").val($(this).data("page"));
         $("#searchForm").submit();
     });
-
     $("#btn_search").on('click', function() {
         $("#kw").val($(".kw").val());
         $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
         $("#searchForm").submit();
     });
-
     $(".so").on('change', function() {
         $("#so").val($(this).val());
         $("#page").val(1);
